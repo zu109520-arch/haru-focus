@@ -1,0 +1,566 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  overflow: hidden; /* 禁止整頁滾動 */
+}
+
+/* ===== 全畫面容器 ===== */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-image 0.6s ease;
+  position: relative;
+}
+
+/* 背景遮罩 */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  transition: background 0.6s ease;
+}
+
+/* ===== 主題色變數 ===== */
+.focus-mode {
+  --accent: #ff4d4f;
+  --accent-light: #fff1f0;
+  --accent-ring: rgba(255, 77, 79, 0.6);
+  --tab-active-bg: #ff4d4f;
+  --btn-bg: #ff4d4f;
+  --btn-hover: #e03f41;
+  --ring-color: #ff4d4f;
+  --check-color: #ff4d4f;
+}
+
+.break-mode {
+  --accent: #52c41a;
+  --accent-light: #f6ffed;
+  --accent-ring: rgba(82, 196, 26, 0.6);
+  --tab-active-bg: #52c41a;
+  --btn-bg: #52c41a;
+  --btn-hover: #45a017;
+  --ring-color: #52c41a;
+  --check-color: #52c41a;
+}
+
+/* ===== 主卡片 ===== */
+.timer-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border-radius: 28px;
+  padding: 24px 28px 20px;
+  width: min(420px, 95vw);
+  max-height: 96vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: box-shadow 0.4s;
+  scrollbar-width: none;
+}
+
+.timer-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== 工具列 ===== */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tool-btn {
+  background: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: #555;
+  white-space: nowrap;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.tool-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* 模式切換 Tab */
+.mode-tabs {
+  display: flex;
+  background: #f0f0f0;
+  border-radius: 20px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.tab {
+  border: none;
+  background: none;
+  border-radius: 17px;
+  padding: 5px 16px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  color: #888;
+  transition: background 0.25s, color 0.25s;
+}
+
+.tab.active {
+  background: var(--tab-active-bg);
+  color: white;
+  font-weight: 500;
+}
+
+/* ===== 設定面板 ===== */
+.settings-panel {
+  background: #fafafa;
+  border: 1px solid #efefef;
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.setting-row label {
+  font-size: 0.88rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.setting-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.setting-control button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+
+.setting-control button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.setting-control span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 44px;
+  text-align: center;
+}
+
+.save-btn {
+  align-self: flex-end;
+  background: var(--btn-bg);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 22px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.save-btn:hover {
+  background: var(--btn-hover);
+}
+
+/* ===== 背景輸入 ===== */
+.bg-input-panel {
+  display: flex;
+  gap: 8px;
+  animation: slideDown 0.2s ease;
+}
+
+.bg-input-panel input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.bg-input-panel input:focus {
+  border-color: var(--accent);
+}
+
+.bg-input-panel button {
+  background: var(--btn-bg);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 18px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.bg-input-panel button:hover {
+  background: var(--btn-hover);
+}
+
+/* ===== 圓形計時器 ===== */
+.timer-ring-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.timer-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 8;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: var(--ring-color);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear, stroke 0.4s ease;
+}
+
+.timer-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.timer-display {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 2px;
+  line-height: 1;
+  transition: color 0.4s;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-mode-label {
+  font-size: 0.78rem;
+  color: #aaa;
+  letter-spacing: 0.05em;
+}
+
+/* ===== 控制按鈕 ===== */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-btn {
+  width: 100%;
+  background: var(--btn-bg);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.main-btn:hover {
+  background: var(--btn-hover);
+}
+
+.main-btn:active {
+  transform: scale(0.98);
+}
+
+.reset-btn {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.reset-btn:hover {
+  color: var(--accent);
+}
+
+/* ===== 統計列 ===== */
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: #f8f8f8;
+  border-radius: 16px;
+  padding: 10px 0;
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-num {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  transition: color 0.4s;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 30px;
+  background: #e0e0e0;
+}
+
+/* ===== 待辦清單 ===== */
+.todo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.todo-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.todo-input {
+  display: flex;
+  gap: 8px;
+}
+
+.todo-input input {
+  flex: 1;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  outline: none;
+  background: #fafafa;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.todo-input input:focus {
+  border-color: var(--accent);
+  background: white;
+}
+
+.add-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: var(--btn-bg);
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.1s;
+  line-height: 1;
+}
+
+.add-btn:hover {
+  background: var(--btn-hover);
+}
+
+.add-btn:active {
+  transform: scale(0.92);
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 140px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd transparent;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  background: #fafafa;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  transition: opacity 0.2s;
+}
+
+.todo-list li.completed {
+  opacity: 0.5;
+}
+
+.todo-list li.completed span {
+  text-decoration: line-through;
+}
+
+.check-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--check-color);
+  background: none;
+  cursor: pointer;
+  font-size: 0.7rem;
+  color: var(--check-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.check-btn:hover {
+  background: var(--accent-light);
+}
+
+.todo-list li span {
+  flex: 1;
+  font-size: 0.88rem;
+  color: #444;
+  cursor: pointer;
+  user-select: none;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.delete-btn:hover {
+  color: #ff4d4f;
+}
+
+.todo-empty {
+  font-size: 0.82rem;
+  color: #ccc;
+  text-align: center;
+  padding: 8px;
+}
+
+/* ===== 通知（取代 alert）===== */
+.notification {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.92);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  z-index: 100;
+  cursor: pointer;
+  animation: fadeInDown 0.3s ease;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translate(-50%, -16px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ===== 響應式調整 ===== */
+@media (max-height: 700px) {
+  .timer-ring-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+  .timer-display {
+    font-size: 2.4rem;
+  }
+  .timer-card {
+    gap: 10px;
+    padding: 18px 22px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer-card {
+    padding: 18px 16px 14px;
+    border-radius: 20px;
+  }
+}
