@@ -4,6 +4,7 @@ import { useTimer } from './hooks/useTimer'
 import { TodoList } from './components/TodoList'
 import { TimeSettings } from './components/TimeSettings'
 import { Notification } from './components/Notification'
+import { useWeather } from './hooks/useWeather'
 
 function formatTime(s) {
   const mins = Math.floor(s / 60)
@@ -77,6 +78,8 @@ function App() {
       setShowBgInput(false)
     }
   }
+
+  const { weather, error: weatherError } = useWeather()
 
   const circumference = 2 * Math.PI * 90
   const progress = 1 - seconds / initialSeconds
@@ -169,6 +172,25 @@ function App() {
             <span className="stat-num">{focusMin}</span>
             <span className="stat-label">分 / 輪</span>
           </div>
+        </div>
+
+        <div className="weather-bar">
+          {weather ? (
+            <>
+              <img
+                src={`https://openweathermap.org/img/wn/${weather.icon}.png`}
+                alt={weather.desc}
+                className="weather-icon"
+              />
+              <span className="weather-text">
+                {weather.city}　{weather.temp}°C　{weather.desc}
+              </span>
+            </>
+          ) : weatherError ? (
+            <span className="weather-text weather-error">{weatherError}</span>
+          ) : (
+            <span className="weather-text">載入天氣中...</span>
+          )}
         </div>
 
         <TodoList todos={todos} setTodos={setTodos} />

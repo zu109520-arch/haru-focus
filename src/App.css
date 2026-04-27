@@ -573,3 +573,26 @@ body {
   color: #333;
   letter-spacing: 0.03em;
 }
+
+/* ===== 天氣列 ===== */
+.weather-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 0 2px;
+}
+
+.weather-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.weather-text {
+  font-size: 0.82rem;
+  color: #888;
+}
+
+.weather-error {
+  color: #ccc;
+}

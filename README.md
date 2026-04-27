@@ -16,6 +16,7 @@
 - 整合瀏覽器 Audio API 播放提示音效
 - Tab 標題同步顯示倒計時（`document.title`）
 - localStorage 持久化：計時設定、待辦清單、背景圖片跨頁面保留
+- 串接 OpenWeatherMap RESTful API，依使用者當前位置即時顯示天氣資訊
 
 ---
 
@@ -29,6 +30,7 @@
 | 建置工具 | Vite |
 | 部署 | Vercel |
 | 資料儲存 | localStorage |
+| 外部 API | OpenWeatherMap API |
 
 ---
 
@@ -54,6 +56,10 @@
 - 主題色隨模式切換（專注：紅色 / 休息：綠色）
 - 自訂背景圖片（輸入圖片 URL 即時套用）
 
+**天氣資訊**
+- 串接 OpenWeatherMap API，取得使用者當前位置天氣
+- 即時顯示城市、溫度、天氣狀態
+
 ---
 
 ## 元件結構
@@ -61,7 +67,8 @@
 ```
 src/
 ├── hooks/
-│   └── useTimer.js         # 計時器 Custom Hook
+│   ├── useTimer.js         # 計時器 Custom Hook
+│   └── useWeather.js       # 天氣 Custom Hook
 ├── components/
 │   ├── TodoList.jsx         # 待辦清單元件
 │   ├── TimeSettings.jsx     # 時間設定元件
@@ -80,6 +87,11 @@ cd haru-focus
 npm install
 npm run dev
 ```
+
+> 本機執行需在根目錄建立 `.env` 檔案並填入 OpenWeatherMap API Key：
+> ```
+> VITE_WEATHER_API_KEY=your_api_key_here
+> ```
 
 ---
 
