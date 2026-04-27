@@ -46,7 +46,7 @@ function App() {
   }, [count, todos, customBg, focusMin, breakMin])
 
   useEffect(() => {
-    document.title = isActive ? `(${formatTime(seconds)}) HARU Focus` : 'HARU Focus'
+    document.title = isActive ? `(${formatTime(seconds)}) Pomodoro Timer` : 'Pomodoro Timer'
   }, [seconds, isActive])
 
   useEffect(() => {
@@ -93,6 +93,8 @@ function App() {
       )}
 
       <div className="timer-card">
+        <h1 className="app-title">🍅 Pomodoro Timer</h1>
+
         <div className="toolbar">
           <button
             className="tool-btn"

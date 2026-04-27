@@ -564,3 +564,12 @@ body {
     border-radius: 20px;
   }
 }
+
+/* ===== 應用標題 ===== */
+.app-title {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 0.03em;
+}
