@@ -32,7 +32,7 @@ function App() {
     catch { return [] }
   })
   const [customBg, setCustomBg] = useState(
-    () => localStorage.getItem('haru-bg') || 'https://images.unsplash.com/photo-1519681393784-d120267933ba'
+    () => localStorage.getItem('haru-bg') || '#efeeee'
   )
 
   const initialSeconds = isBreak ? breakMin * 60 : focusMin * 60
@@ -92,7 +92,7 @@ useEffect(() => {
   return (
     <div
       className={`app-container ${isBreak ? 'break-mode' : 'focus-mode'}`}
-      style={{ backgroundImage: `url(${customBg})` }}
+      style={customBg.startsWith('#') ? { backgroundColor: customBg } : { backgroundImage: `url(${customBg})` }}
     >
       <div className="overlay" />
 
