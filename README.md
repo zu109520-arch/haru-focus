@@ -1,8 +1,8 @@
-# 🍅 Pomodoro Timer
+# Pomodoro Timer
 
 一個以 React.js 建構的專注力計時應用，結合番茄工作法與待辦清單，幫助使用者提升工作效率。
 
-🔗 **Live Demo：** [haru-focus.vercel.app](https://haru-focus.vercel.app)
+**Live Demo：** [haru-focus.vercel.app](https://haru-focus.vercel.app)
 
 ---
 
@@ -93,10 +93,4 @@ npm run dev
 > VITE_WEATHER_API_KEY=your_api_key_here
 > ```
 
----
 
-## 作者
-
-**羅子晴** — 前端網頁工程師  
-📧 zu109520@gmail.com  
-🐙 [github.com/zu109520-arch](https://github.com/zu109520-arch)
