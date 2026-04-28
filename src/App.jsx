@@ -62,7 +62,7 @@ useEffect(() => {
     for (let i = 0; i < 5; i++) {
       const audio = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg')
       audio.play().catch(() => {})
-      await new Promise(res => setTimeout(res, 800))
+      await new Promise(res => setTimeout(res, 1500))
     }
   }
   playBeep()
