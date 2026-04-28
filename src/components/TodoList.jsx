@@ -32,7 +32,7 @@ export function TodoList({ todos, setTodos }) {
       </div>
       <ul className="todo-list">
         {todos.length === 0 && (
-          <li className="todo-empty">沒有任務，專心放鬆！</li>
+          <li className="todo-empty">目前沒有任務</li>
         )}
         {todos.map(todo => (
           <li key={todo.id} className={todo.completed ? 'completed' : ''}>

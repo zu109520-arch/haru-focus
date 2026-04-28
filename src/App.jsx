@@ -50,19 +50,24 @@ function App() {
     document.title = isActive ? `(${formatTime(seconds)}) Pomodoro Timer` : 'Pomodoro Timer'
   }, [seconds, isActive])
 
-  useEffect(() => {
-    if (!justFinished) return
-    if (!isBreak) {
-      setCount(prev => prev + 1)
-      setNotification('辛苦了！休息一下吧 ☕')
-    } else {
-      setNotification('休息結束！繼續加油 💪')
+useEffect(() => {
+  if (!justFinished) return
+  if (!isBreak) {
+    setCount(prev => prev + 1)
+    setNotification('辛苦了！休息一下吧 ☕')
+  } else {
+    setNotification('休息結束！繼續加油 💪')
+  }
+  const playBeep = async () => {
+    for (let i = 0; i < 5; i++) {
+      const audio = new Audio('https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg')
+      audio.play().catch(() => {})
+      await new Promise(res => setTimeout(res, 800))
     }
-    new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg')
-      .play()
-      .catch(() => {})
-    setJustFinished(false)
-  }, [justFinished, isBreak, setJustFinished])
+  }
+  playBeep()
+  setJustFinished(false)
+}, [justFinished, isBreak, setJustFinished])
 
   const handleSaveSettings = (fMin, bMin) => {
     setFocusMin(fMin)
