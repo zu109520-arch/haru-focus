@@ -27,7 +27,7 @@ export function useWeather() {
           setError('無法取得天氣')
         }
       },
-      () => setError('定位被拒絕')
+      () => setError('請開啟瀏覽器位置權限以顯示天氣')
     )
   }, [])
 

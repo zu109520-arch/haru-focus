@@ -1,4 +1,3 @@
-/* ===== Reset & Base ===== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -7,10 +6,9 @@
 
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
-  overflow: hidden; /* 禁止整頁滾動 */
+  overflow: hidden; 
 }
 
-/* ===== 全畫面容器 ===== */
 .app-container {
   width: 100vw;
   height: 100vh;
@@ -23,7 +21,6 @@ body {
   position: relative;
 }
 
-/* 背景遮罩 */
 .overlay {
   position: absolute;
   inset: 0;
@@ -32,7 +29,6 @@ body {
   transition: background 0.6s ease;
 }
 
-/* ===== 主題色變數 ===== */
 .focus-mode {
   --accent: #ff4d4f;
   --accent-light: #fff1f0;
@@ -55,7 +51,6 @@ body {
   --check-color: #52c41a;
 }
 
-/* ===== 主卡片 ===== */
 .timer-card {
   position: relative;
   z-index: 1;
@@ -79,7 +74,6 @@ body {
   display: none;
 }
 
-/* ===== 工具列 ===== */
 .toolbar {
   display: flex;
   align-items: center;
@@ -104,7 +98,6 @@ body {
   color: var(--accent);
 }
 
-/* 模式切換 Tab */
 .mode-tabs {
   display: flex;
   background: #f0f0f0;
@@ -130,7 +123,6 @@ body {
   font-weight: 500;
 }
 
-/* ===== 設定面板 ===== */
 .settings-panel {
   background: #fafafa;
   border: 1px solid #efefef;
@@ -207,7 +199,6 @@ body {
   background: var(--btn-hover);
 }
 
-/* ===== 背景輸入 ===== */
 .bg-input-panel {
   display: flex;
   gap: 8px;
@@ -243,7 +234,6 @@ body {
   background: var(--btn-hover);
 }
 
-/* ===== 圓形計時器 ===== */
 .timer-ring-wrapper {
   position: relative;
   width: 200px;
@@ -297,7 +287,6 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* ===== 控制按鈕 ===== */
 .controls {
   display: flex;
   flex-direction: column;
@@ -342,7 +331,6 @@ body {
   color: var(--accent);
 }
 
-/* ===== 統計列 ===== */
 .stats-row {
   display: flex;
   align-items: center;
@@ -379,7 +367,6 @@ body {
   background: #e0e0e0;
 }
 
-/* ===== 待辦清單 ===== */
 .todo-section {
   display: flex;
   flex-direction: column;
@@ -520,7 +507,6 @@ body {
   padding: 8px;
 }
 
-/* ===== 通知（取代 alert）===== */
 .notification {
   position: fixed;
   top: 24px;
@@ -543,7 +529,6 @@ body {
   to { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* ===== 響應式調整 ===== */
 @media (max-height: 700px) {
   .timer-ring-wrapper {
     width: 160px;
@@ -565,7 +550,6 @@ body {
   }
 }
 
-/* ===== 應用標題 ===== */
 .app-title {
   text-align: center;
   font-size: 1.3rem;
@@ -574,7 +558,6 @@ body {
   letter-spacing: 0.03em;
 }
 
-/* ===== 天氣列 ===== */
 .weather-bar {
   display: flex;
   align-items: center;

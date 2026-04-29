@@ -5,13 +5,11 @@ export function useTimer(initialSeconds) {
   const [isActive, setIsActive] = useState(false)
   const [justFinished, setJustFinished] = useState(false)
 
-  // initialSeconds 改變時重設
   useEffect(() => {
     setSeconds(initialSeconds)
     setIsActive(false)
   }, [initialSeconds])
 
-  // 倒數邏輯
   useEffect(() => {
     if (!isActive) return
     const interval = setInterval(() => {
@@ -26,7 +24,6 @@ export function useTimer(initialSeconds) {
     return () => clearInterval(interval)
   }, [isActive])
 
-  // 結束偵測
   useEffect(() => {
     if (seconds === 0 && isActive) {
       setIsActive(false)

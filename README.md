@@ -3,6 +3,7 @@
 一個以 React.js 建構的專注力計時應用，結合番茄工作法與待辦清單，幫助使用者提升工作效率。
 
 **Live Demo：** [haru-focus.vercel.app](https://haru-focus.vercel.app)
+[![番茄鐘專注計時器](https://github.com/user-attachments/assets/965776da-17a8-4f2c-8f77-00ea49c7e965)](https://haru-focus.vercel.app)
 
 ---
 
