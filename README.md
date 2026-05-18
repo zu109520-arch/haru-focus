@@ -21,6 +21,29 @@
 
 ---
 
+## 技術亮點
+
+**Custom Hook 封裝計時邏輯**
+- 將 `setInterval`、`clearInterval` 與計時狀態抽出至 `useTimer`
+- 在 `useEffect` 的 cleanup function 中清除計時器，避免 memory leak
+- App.jsx 只負責 UI，邏輯與畫面分離，提升可測試性與可維護性
+
+**CSS 變數動態主題切換**
+- 父元件根據模式切換 `.focus-mode` / `.break-mode` className
+- 兩個 class 定義不同的 `--accent` 變數值，子元件自動繼承
+- 不需透過 props 一層一層傳遞顏色，樣式邏輯集中於 CSS
+
+**SVG 圓形進度環**
+- 使用 `strokeDasharray` 設定圓周長度、`strokeDashoffset` 控制缺口
+- 依剩餘時間比例動態計算偏移量，每秒平滑更新
+- 純 SVG 實作，不依賴圖片或第三方圖表函式庫
+
+**RESTful API 串接**
+- 透過 Geolocation API 取得使用者經緯度
+- 以 Fetch API 呼叫 OpenWeatherMap，處理 JSON 回應與錯誤狀態
+
+---
+
 ## 技術架構
 
 | 類別 | 技術 |
@@ -93,5 +116,3 @@ npm run dev
 > ```
 > VITE_WEATHER_API_KEY=your_api_key_here
 > ```
-
-
