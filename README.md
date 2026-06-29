@@ -9,7 +9,7 @@
 
 ## 專案特色
 
-- 以 Custom Hook（`useTimer`）封裝計時邏輯，實現業務邏輯與 UI 分離
+- 以 Custom Hook（`useTimer`）封裝倒數計時邏輯，提升邏輯與 UI 的分離性
 - 專注 / 休息雙模式切換，SVG 圓形進度環動態顯示剩餘時間
 - 整合 Todo List CRUD 功能，透過 `useEffect` 達成跨元件狀態同步
 - CSS 變數（`--accent`）實現主題色動態切換
@@ -26,7 +26,7 @@
 **Custom Hook 封裝計時邏輯**
 - 將 `setInterval`、`clearInterval` 與計時狀態抽出至 `useTimer`
 - 在 `useEffect` 的 cleanup function 中清除計時器，避免 memory leak
-- App.jsx 只負責 UI，邏輯與畫面分離，提升可測試性與可維護性
+- App.jsx 專注於畫面組裝，提升元件可測試性與維護性
 
 **CSS 變數動態主題切換**
 - 父元件根據模式切換 `.focus-mode` / `.break-mode` className
@@ -44,13 +44,21 @@
 
 ---
 
+## 開發挑戰
+
+- 使用 setInterval 實作倒數計時時，需避免 React re-render 導致 stale closure 問題，確保計時狀態正確更新
+- 在專注 / 休息模式切換時，需同步更新計時器與待辦流程狀態，避免邏輯不一致
+- 串接 Geolocation API 與天氣資料時，需處理權限拒絕與 API 請求失敗，提高應用穩定性
+
+---
+
 ## 技術架構
 
 | 類別 | 技術 |
 |------|------|
-| 框架 | React.js 18 |
-| 狀態管理 | React Hooks（useState、useEffect、Custom Hook） |
-| 樣式 | CSS3 變數、SVG 動畫 |
+| 框架 | React |
+| 狀態管理 | React Hooks / Custom Hook |
+| 樣式系統 | CSS Variables / SVG Animation |
 | 建置工具 | Vite |
 | 部署 | Vercel |
 | 資料儲存 | localStorage |
