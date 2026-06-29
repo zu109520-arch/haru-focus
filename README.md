@@ -9,6 +9,7 @@
 
 ## 專案特色
 
+- 使用 TypeScript 撰寫，透過 interface 定義元件 Props 與資料結構，提升程式碼可維護性與型別安全性
 - 以 Custom Hook（`useTimer`）封裝倒數計時邏輯，提升邏輯與 UI 的分離性
 - 專注 / 休息雙模式切換，SVG 圓形進度環動態顯示剩餘時間
 - 整合 Todo List CRUD 功能，透過 `useEffect` 達成跨元件狀態同步
@@ -26,7 +27,7 @@
 **Custom Hook 封裝計時邏輯**
 - 將 `setInterval`、`clearInterval` 與計時狀態抽出至 `useTimer`
 - 在 `useEffect` 的 cleanup function 中清除計時器，避免 memory leak
-- App.jsx 專注於畫面組裝，提升元件可測試性與維護性
+- App.tsx 專注於畫面組裝，提升元件可測試性與維護性
 
 **CSS 變數動態主題切換**
 - 父元件根據模式切換 `.focus-mode` / `.break-mode` className
@@ -57,6 +58,7 @@
 | 類別 | 技術 |
 |------|------|
 | 框架 | React |
+| 語言 | TypeScript |
 | 狀態管理 | React Hooks / Custom Hook |
 | 樣式系統 | CSS Variables / SVG Animation |
 | 建置工具 | Vite |
@@ -99,14 +101,14 @@
 ```
 src/
 ├── hooks/
-│   ├── useTimer.js         # 計時器 Custom Hook
-│   └── useWeather.js       # 天氣 Custom Hook
+│   ├── useTimer.ts          # 計時器 Custom Hook
+│   └── useWeather.ts        # 天氣 Custom Hook
 ├── components/
-│   ├── TodoList.jsx         # 待辦清單元件
-│   ├── TimeSettings.jsx     # 時間設定元件
-│   └── Notification.jsx     # 通知元件
-├── App.jsx                  # 主元件
-└── App.css                  # 全域樣式與 CSS 變數
+│   ├── TodoList.tsx          # 待辦清單元件
+│   ├── TimeSettings.tsx      # 時間設定元件
+│   └── Notification.tsx      # 通知元件
+├── App.tsx                   # 主元件
+└── App.css                   # 全域樣式與 CSS 變數
 ```
 
 ---
