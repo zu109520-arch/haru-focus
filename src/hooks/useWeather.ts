@@ -1,8 +1,15 @@
 import { useState, useEffect } from 'react'
 
+interface Weather {
+  temp: number
+  desc: string
+  icon: string
+  city: string
+} 
+
 export function useWeather() {
-  const [weather, setWeather] = useState(null)
-  const [error, setError] = useState(null)
+  const [weather, setWeather] = useState<Weather | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!navigator.geolocation) {

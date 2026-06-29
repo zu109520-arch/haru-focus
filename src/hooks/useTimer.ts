@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 
-export function useTimer(initialSeconds) {
+export function useTimer(initialSeconds: number) {
   const [seconds, setSeconds] = useState(initialSeconds)
   const [isActive, setIsActive] = useState(false)
   const [justFinished, setJustFinished] = useState(false)
@@ -31,7 +31,7 @@ export function useTimer(initialSeconds) {
     }
   }, [seconds, isActive])
 
-  const reset = useCallback((newSeconds) => {
+  const reset = useCallback((newSeconds?: number) => {
     setIsActive(false)
     setSeconds(newSeconds ?? initialSeconds)
     setJustFinished(false)

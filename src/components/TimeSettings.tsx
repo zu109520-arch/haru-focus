@@ -1,6 +1,12 @@
 import { useState } from 'react'
 
-export function TimeSettings({ focusMin, breakMin, onSave }) {
+interface TimeSettingsProps {
+  focusMin: number
+  breakMin: number
+  onSave: (focusMin: number, breakMin: number) => void
+}
+
+export function TimeSettings({ focusMin, breakMin, onSave }: TimeSettingsProps) {
   const [fMin, setFMin] = useState(focusMin)
   const [bMin, setBMin] = useState(breakMin)
 

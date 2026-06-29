@@ -1,6 +1,17 @@
 import { useState } from 'react'
 
-export function TodoList({ todos, setTodos }) {
+interface Todo {
+  id: number
+  text: string
+  completed: boolean
+}
+
+interface TodoListProps {
+  todos: Todo[]
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+}
+
+export function TodoList({ todos, setTodos }: TodoListProps) {
   const [input, setInput] = useState('')
 
   const addTodo = () => {
@@ -10,11 +21,11 @@ export function TodoList({ todos, setTodos }) {
     }
   }
 
-  const toggleTodo = (id) => {
+  const toggleTodo = (id: number) => {
     setTodos(prev => prev.map(t => t.id === id ? { ...t, completed: !t.completed } : t))
   }
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: number) => {
     setTodos(prev => prev.filter(t => t.id !== id))
   }
 

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { useTimer } from './hooks/useTimer'
-import { TodoList } from './components/TodoList'
-import { TimeSettings } from './components/TimeSettings'
-import { Notification } from './components/Notification'
-import { useWeather } from './hooks/useWeather'
+import { useTimer } from './hooks/useTimer.js'
+import { TodoList } from './components/TodoList.js'
+import { TimeSettings } from './components/TimeSettings.js'
+import { Notification } from './components/Notification.js'
+import { useWeather } from './hooks/useWeather.js'
 
-function formatTime(s) {
+function formatTime(s: number) {
   const mins = Math.floor(s / 60)
   const secs = s % 60
   return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
@@ -23,12 +23,12 @@ function App() {
   const [showSettings, setShowSettings] = useState(false)
   const [showBgInput, setShowBgInput] = useState(false)
   const [bgInput, setBgInput] = useState('')
-  const [notification, setNotification] = useState(null)
+  const [notification, setNotification] = useState<string | null>(null)
   const [count, setCount] = useState(
     () => Number(localStorage.getItem('haru-count')) || 0
   )
   const [todos, setTodos] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('haru-todos')) || [] }
+    try { return JSON.parse(localStorage.getItem('haru-todos') ?? '[]') }
     catch { return [] }
   })
   const [customBg, setCustomBg] = useState(
@@ -39,11 +39,11 @@ function App() {
   const { seconds, isActive, setIsActive, reset, justFinished, setJustFinished } = useTimer(initialSeconds)
 
   useEffect(() => {
-    localStorage.setItem('haru-count', count)
+    localStorage.setItem('haru-count', String(count))
     localStorage.setItem('haru-todos', JSON.stringify(todos))
     localStorage.setItem('haru-bg', customBg)
-    localStorage.setItem('haru-focus-min', focusMin)
-    localStorage.setItem('haru-break-min', breakMin)
+    localStorage.setItem('haru-focus-min', String(focusMin))
+    localStorage.setItem('haru-break-min', String(breakMin))
   }, [count, todos, customBg, focusMin, breakMin])
 
   useEffect(() => {
@@ -69,7 +69,7 @@ useEffect(() => {
   setJustFinished(false)
 }, [justFinished, isBreak, setJustFinished])
 
-  const handleSaveSettings = (fMin, bMin) => {
+  const handleSaveSettings = (fMin: number, bMin: number) => {
     setFocusMin(fMin)
     setBreakMin(bMin)
     setShowSettings(false)
@@ -97,7 +97,7 @@ useEffect(() => {
       <div className="overlay" />
 
       {notification && (
-        <Notification message={notification} onClose={() => setNotification(null)} />
+        <Notification message={notification!} onClose={() => setNotification(null)} />
       )}
 
       <div className="timer-card">
@@ -156,7 +156,7 @@ useEffect(() => {
         </div>
 
         <div className="controls">
-          <button className="main-btn" onClick={() => setIsActive(a => !a)}>
+          <button className="main-btn" onClick={() => setIsActive((a: boolean) => !a)}>
             {isActive ? '暫停' : (seconds < initialSeconds && seconds > 0 ? '繼續' : '開始')}
           </button>
           <button className="reset-btn" onClick={() => reset()}>重設</button>
