@@ -25,21 +25,25 @@
 ## 技術亮點
 
 **Custom Hook 封裝計時邏輯**
+
 - 將 `setInterval`、`clearInterval` 與計時狀態抽出至 `useTimer`
 - 在 `useEffect` 的 cleanup function 中清除計時器，避免 memory leak
 - App.tsx 專注於畫面組裝，提升元件可測試性與維護性
 
 **CSS 變數動態主題切換**
+
 - 父元件根據模式切換 `.focus-mode` / `.break-mode` className
 - 兩個 class 定義不同的 `--accent` 變數值，子元件自動繼承
 - 不需透過 props 一層一層傳遞顏色，樣式邏輯集中於 CSS
 
 **SVG 圓形進度環**
+
 - 使用 `strokeDasharray` 設定圓周長度、`strokeDashoffset` 控制缺口
 - 依剩餘時間比例動態計算偏移量，每秒平滑更新
 - 純 SVG 實作，不依賴圖片或第三方圖表函式庫
 
 **RESTful API 串接**
+
 - 透過 Geolocation API 取得使用者經緯度
 - 以 Fetch API 呼叫 OpenWeatherMap，處理 JSON 回應與錯誤狀態
 
@@ -55,22 +59,23 @@
 
 ## 技術架構
 
-| 類別 | 技術 |
-|------|------|
-| 框架 | React |
-| 語言 | TypeScript |
-| 狀態管理 | React Hooks / Custom Hook |
+| 類別     | 技術                          |
+| -------- | ----------------------------- |
+| 框架     | React                         |
+| 語言     | TypeScript                    |
+| 狀態管理 | React Hooks / Custom Hook     |
 | 樣式系統 | CSS Variables / SVG Animation |
-| 建置工具 | Vite |
-| 部署 | Vercel |
-| 資料儲存 | localStorage |
-| 外部 API | OpenWeatherMap API |
+| 建置工具 | Vite                          |
+| 部署     | Vercel                        |
+| 資料儲存 | localStorage                  |
+| 外部 API | OpenWeatherMap API            |
 
 ---
 
 ## 主要功能
 
 **計時器**
+
 - 專注 / 休息模式一鍵切換
 - SVG 圓形進度環即時顯示剩餘時間比例
 - 開始、暫停、繼續、重設
@@ -78,19 +83,23 @@
 - 計時結束播放音效提示
 
 **統計**
+
 - 累計專注次數
 - 累計專注小時數
 - 每輪專注分鐘數顯示
 
 **待辦清單**
+
 - 新增、勾選完成、刪除
 - localStorage 持久化，重新整理不遺失
 
 **個人化**
+
 - 主題色隨模式切換（專注：紅色 / 休息：綠色）
 - 自訂背景圖片（輸入圖片 URL 即時套用）
 
 **天氣資訊**
+
 - 串接 OpenWeatherMap API，取得使用者當前位置天氣
 - 即時顯示城市、溫度、天氣狀態
 
@@ -123,6 +132,7 @@ npm run dev
 ```
 
 > 本機執行需在根目錄建立 `.env` 檔案並填入 OpenWeatherMap API Key：
+>
 > ```
 > VITE_WEATHER_API_KEY=your_api_key_here
 > ```

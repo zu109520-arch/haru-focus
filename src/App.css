@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -6,7 +8,7 @@
 
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .app-container {
@@ -90,7 +92,9 @@ body {
   cursor: pointer;
   color: #555;
   white-space: nowrap;
-  transition: border-color 0.2s, color 0.2s;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
 }
 
 .tool-btn:hover {
@@ -114,7 +118,9 @@ body {
   font-size: 0.82rem;
   cursor: pointer;
   color: #888;
-  transition: background 0.25s, color 0.25s;
+  transition:
+    background 0.25s,
+    color 0.25s;
 }
 
 .tab.active {
@@ -135,8 +141,14 @@ body {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .setting-row {
@@ -258,7 +270,9 @@ body {
   stroke: var(--ring-color);
   stroke-width: 8;
   stroke-linecap: round;
-  transition: stroke-dashoffset 1s linear, stroke 0.4s ease;
+  transition:
+    stroke-dashoffset 1s linear,
+    stroke 0.4s ease;
 }
 
 .timer-center {
@@ -305,7 +319,9 @@ body {
   font-weight: 600;
   cursor: pointer;
   letter-spacing: 0.05em;
-  transition: background 0.2s, transform 0.1s;
+  transition:
+    background 0.2s,
+    transform 0.1s;
 }
 
 .main-btn:hover {
@@ -394,7 +410,9 @@ body {
   font-size: 0.88rem;
   outline: none;
   background: #fafafa;
-  transition: border-color 0.2s, background 0.2s;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
 }
 
 .todo-input input:focus {
@@ -415,7 +433,9 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: background 0.2s, transform 0.1s;
+  transition:
+    background 0.2s,
+    transform 0.1s;
   line-height: 1;
 }
 
@@ -521,12 +541,18 @@ body {
   cursor: pointer;
   animation: fadeInDown 0.3s ease;
   backdrop-filter: blur(8px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translate(-50%, -16px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
+  from {
+    opacity: 0;
+    transform: translate(-50%, -16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 @media (max-height: 700px) {

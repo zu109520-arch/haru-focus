@@ -1,33 +1,38 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 interface Todo {
-  id: number
-  text: string
-  completed: boolean
+  id: number;
+  text: string;
+  completed: boolean;
 }
 
 interface TodoListProps {
-  todos: Todo[]
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
 export function TodoList({ todos, setTodos }: TodoListProps) {
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState('');
 
   const addTodo = () => {
     if (input.trim()) {
-      setTodos(prev => [...prev, { id: Date.now(), text: input.trim(), completed: false }])
-      setInput('')
+      setTodos((prev) => [
+        ...prev,
+        { id: Date.now(), text: input.trim(), completed: false },
+      ]);
+      setInput('');
     }
-  }
+  };
 
   const toggleTodo = (id: number) => {
-    setTodos(prev => prev.map(t => t.id === id ? { ...t, completed: !t.completed } : t))
-  }
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t)),
+    );
+  };
 
   const deleteTodo = (id: number) => {
-    setTodos(prev => prev.filter(t => t.id !== id))
-  }
+    setTodos((prev) => prev.filter((t) => t.id !== id));
+  };
 
   return (
     <div className="todo-section">
@@ -35,26 +40,28 @@ export function TodoList({ todos, setTodos }: TodoListProps) {
       <div className="todo-input">
         <input
           value={input}
-          onChange={e => setInput(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && addTodo()}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && addTodo()}
           placeholder="新增任務..."
         />
-        <button onClick={addTodo} className="add-btn">+</button>
+        <button onClick={addTodo} className="add-btn">
+          +
+        </button>
       </div>
       <ul className="todo-list">
-        {todos.length === 0 && (
-          <li className="todo-empty">目前沒有任務</li>
-        )}
-        {todos.map(todo => (
+        {todos.length === 0 && <li className="todo-empty">目前沒有任務</li>}
+        {todos.map((todo) => (
           <li key={todo.id} className={todo.completed ? 'completed' : ''}>
             <button className="check-btn" onClick={() => toggleTodo(todo.id)}>
               {todo.completed ? '✓' : ''}
             </button>
             <span onClick={() => toggleTodo(todo.id)}>{todo.text}</span>
-            <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>×</button>
+            <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>
+              ×
+            </button>
           </li>
         ))}
       </ul>
     </div>
-  )
+  );
 }

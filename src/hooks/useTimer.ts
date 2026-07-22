@@ -1,41 +1,51 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react';
 
 export function useTimer(initialSeconds: number) {
-  const [seconds, setSeconds] = useState(initialSeconds)
-  const [isActive, setIsActive] = useState(false)
-  const [justFinished, setJustFinished] = useState(false)
+  const [seconds, setSeconds] = useState(initialSeconds);
+  const [isActive, setIsActive] = useState(false);
+  const [justFinished, setJustFinished] = useState(false);
 
   useEffect(() => {
-    setSeconds(initialSeconds)
-    setIsActive(false)
-  }, [initialSeconds])
+    setSeconds(initialSeconds);
+    setIsActive(false);
+  }, [initialSeconds]);
 
   useEffect(() => {
-    if (!isActive) return
+    if (!isActive) return;
     const interval = setInterval(() => {
-      setSeconds(s => {
+      setSeconds((s) => {
         if (s <= 1) {
-          clearInterval(interval)
-          return 0
+          clearInterval(interval);
+          return 0;
         }
-        return s - 1
-      })
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [isActive])
+        return s - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isActive]);
 
   useEffect(() => {
     if (seconds === 0 && isActive) {
-      setIsActive(false)
-      setJustFinished(true)
+      setIsActive(false);
+      setJustFinished(true);
     }
-  }, [seconds, isActive])
+  }, [seconds, isActive]);
 
-  const reset = useCallback((newSeconds?: number) => {
-    setIsActive(false)
-    setSeconds(newSeconds ?? initialSeconds)
-    setJustFinished(false)
-  }, [initialSeconds])
+  const reset = useCallback(
+    (newSeconds?: number) => {
+      setIsActive(false);
+      setSeconds(newSeconds ?? initialSeconds);
+      setJustFinished(false);
+    },
+    [initialSeconds],
+  );
 
-  return { seconds, isActive, setIsActive, reset, justFinished, setJustFinished }
+  return {
+    seconds,
+    isActive,
+    setIsActive,
+    reset,
+    justFinished,
+    setJustFinished,
+  };
 }
