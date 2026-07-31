@@ -22,7 +22,9 @@ export function TimeSettings({
         <div className="setting-row-top">
           <label>專注</label>
           <div className="setting-control">
-            <button onClick={() => setFMin((m) => Math.max(1, m - 1))}>−</button>
+            <button onClick={() => setFMin((m) => Math.max(1, m - 1))}>
+              −
+            </button>
             <span>{fMin} 分</span>
             <button onClick={() => setFMin((m) => Math.min(120, m + 1))}>
               +
@@ -42,9 +44,13 @@ export function TimeSettings({
         <div className="setting-row-top">
           <label>休息</label>
           <div className="setting-control">
-            <button onClick={() => setBMin((m) => Math.max(1, m - 1))}>−</button>
+            <button onClick={() => setBMin((m) => Math.max(1, m - 1))}>
+              −
+            </button>
             <span>{bMin} 分</span>
-            <button onClick={() => setBMin((m) => Math.min(60, m + 1))}>+</button>
+            <button onClick={() => setBMin((m) => Math.min(60, m + 1))}>
+              +
+            </button>
           </div>
         </div>
         <div className="preset-row">
