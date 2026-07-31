@@ -153,6 +153,12 @@ body {
 
 .setting-row {
   display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.setting-row-top {
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
@@ -186,6 +192,35 @@ body {
 .setting-control button:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.preset-row {
+  display: flex;
+  gap: 6px;
+}
+
+.preset-btn {
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 14px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: #666;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+
+.preset-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.preset-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
 }
 
 .setting-control span {
